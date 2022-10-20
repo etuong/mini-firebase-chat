@@ -66,7 +66,7 @@ const App = () => {
       await addDoc(collection(db, "messages"), {
         text: formValue,
         createdAt: serverTimestamp(),
-        uid: "asd",
+        uid: user,
       });
 
       setFormValue("");
@@ -111,7 +111,7 @@ const App = () => {
       <header>
         <h1>Engineering Chat!</h1>
       </header>
-      <section>{user ? <ChatRoom /> : <SignIn />}</section>
+      {user ? <ChatRoom /> : <SignIn />}
     </div>
   );
 };
