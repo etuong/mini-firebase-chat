@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+  width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 99vh;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.App header {
+  background-color: gray;
+  color: white;
+}
+
+.App section {
+  justify-content: center;
+  background-color: whitesmoke;
+}
+
+main {
+  padding: 10px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+form {
+  margin-top: auto;
+  display: flex;
+  border-top: 1px solid black;
+  height: 40px;
+}
+
+form button {
+  width: 20%;
+  background-color: #282c34;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+input {
+  width: 100%;
+  font-size: 1.2rem;
+  color: black;
+  border: none;
+  padding: 0 15px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sign-in {
+  color: #282c34;
+  background: white;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+p {
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: #123456;
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+.received p {
+  background: #e5e5ea;
+  color: black;
+}

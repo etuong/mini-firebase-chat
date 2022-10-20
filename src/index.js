@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+// import AuthenticatedChat from "./Chats/AuthenticatedChat";
+import UnauthenticatedChat from "./Chats/UnauthenticatedChat";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+import "./index.css";
+
+ReactDOM.render(<UnauthenticatedChat />, document.getElementById("root"));

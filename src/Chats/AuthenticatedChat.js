@@ -1,24 +1,20 @@
 import React, { useRef, useState } from "react";
-import "./App.css";
 
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAWPTdEMuJJJDOURERWmhXyyM0OiB6L-ns",
-  authDomain: "engineering-chat.firebaseapp.com",
-  projectId: "engineering-chat",
-  storageBucket: "engineering-chat.appspot.com",
-  messagingSenderId: "954486516257",
-  appId: "1:954486516257:web:293cabe558b4e59aa21160",
-};
+import {
+  collection,
+  getDocs,
+  addDoc,
+  getFirestore,
+  serverTimestamp,
+} from "firebase/firestore";
+import firebaseConfig from "../FirebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const App = () => {
+const AuthenticatedChat = () => {
   const auth = getAuth();
   const [user, setUser] = useState();
 
@@ -31,7 +27,7 @@ const App = () => {
 
     return (
       <button className="sign-in" onClick={signInWithPassword}>
-        Sign in with Google
+        Sign In
       </button>
     );
   };
@@ -48,11 +44,11 @@ const App = () => {
 
   const ChatRoom = async () => {
     const dummy = useRef();
-    const messagesRef = firestore.collection("messages");
-    const query = messagesRef.orderBy("createdAt").limit(25);
+    // const messagesRef = firestore.collection("messages");
+    // const query = messagesRef.orderBy("createdAt").limit(25);
     const [messages, setMessages] = useState([]);
 
-    const querySnapshot = await getDocs(collection(db, "users"));
+    const querySnapshot = await getDocs(collection(db, "messages"));
     querySnapshot.forEach((doc) => {
       setMessages(doc.data());
     });
@@ -63,10 +59,9 @@ const App = () => {
       e.preventDefault();
 
       const { uid } = auth.currentUser;
-
-      await messagesRef.add({
+      await addDoc(collection(db, "messages"), {
         text: formValue,
-        createdAt: firestore.FieldValue.serverTimestamp(),
+        createdAt: serverTimestamp(),
         uid,
       });
 
@@ -125,4 +120,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default AuthenticatedChat;
