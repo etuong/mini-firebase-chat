@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { initializeApp } from "firebase/app";
 import {
   addDoc,
@@ -10,7 +9,7 @@ import {
   query,
   serverTimestamp,
 } from "firebase/firestore";
-import firebaseConfig from "../FirebaseConfig";
+import firebaseConfig from "./FirebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
